@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "author": "Luutu Rahma",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-pir-motion-sensor", "id": "pir1", "top": -34.4, "left": 175.02, "attrs": {} },
+    { "type": "wokwi-pir-motion-sensor", "id": "pir2", "top": 148, "left": 184.62, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 15.6,
+      "left": -130.6,
+      "attrs": { "color": "purple" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 150,
+      "left": -130.6,
+      "attrs": { "color": "orange" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 215.15,
+      "left": -124.8,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 80.75,
+      "left": -134.4,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:13", "r1:2", "purple", [ "h-33.41", "v57.6" ] ],
+    [ "led2:A", "r1:1", "purple", [ "v9.6", "h-38.4", "v19.2" ] ],
+    [ "led2:C", "esp:GND.1", "purple", [ "v0", "h-28.4", "v-38.4" ] ],
+    [ "esp:3V3", "pir2:VCC", "red", [ "h-14.21", "v211.2" ] ],
+    [ "pir2:GND", "esp:GND.2", "black", [ "v19.2", "h-115.46", "v-9.6" ] ],
+    [ "esp:12", "pir2:OUT", "purple", [ "v0", "h-23.81", "v105.6", "h249.6" ] ],
+    [ "r2:2", "esp:27", "green", [ "v0" ] ],
+    [ "led1:A", "r2:1", "green", [ "v9.6", "h-48", "v19.2" ] ],
+    [ "led1:C", "esp:GND.1", "green", [ "v0", "h-57.2", "v76.8", "h0", "v0" ] ],
+    [ "pir1:VCC", "esp:3V3", "red", [ "v0", "h-48", "v-76.8", "h-153.6" ] ],
+    [ "pir1:GND", "esp:GND.2", "black", [ "v19.2", "h-96.26", "v-48" ] ],
+    [ "esp:14", "pir1:OUT", "green", [ "h-33.41", "v-144", "h182.4", "v76.8", "h67.2" ] ]
+  ],
+  "dependencies": {}
+}
